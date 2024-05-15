@@ -1,5 +1,9 @@
 # Scan Ship Everywhere Mod
 
+## 1.1.1<br>
+
+\* Fix log spam when ScanNode is null<br>
+
 ## 1.1.0<br>
 
 \+ Add config option for adding a ScanNode to the light switch<br>
