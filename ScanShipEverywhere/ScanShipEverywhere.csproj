@@ -5,7 +5,7 @@
         <AssemblyName>TestAccount666.ScanShipEverywhere</AssemblyName>
         <Product>ScanShipEverywhere</Product>
         <!-- Change to whatever version you're currently on. -->
-        <Version>1.1.0</Version>
+        <Version>1.1.1</Version>
         <Description>Improves scan nodes for you</Description>
         <Source>https://github.com/TheBlackEntity/LethalCompany-ScanShipEverywhere/</Source>
     </PropertyGroup>
