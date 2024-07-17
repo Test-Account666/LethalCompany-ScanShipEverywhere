@@ -7,7 +7,7 @@ namespace ScanShipEverywhere;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 [BepInDependency("PopleZoo.BetterItemScan", BepInDependency.DependencyFlags.SoftDependency)]
-[BepInDependency("ShaosilGaming.GeneralImprovements", BepInDependency.DependencyFlags.SoftDependency)]
+[BepInDependency("Saradora.ScanTweaks", BepInDependency.DependencyFlags.SoftDependency)]
 public class ScanShipEverywhere : BaseUnityPlugin {
     internal static ConfigManager configManager = null!;
     public static ScanShipEverywhere Instance { get; private set; } = null!;
@@ -37,14 +37,6 @@ public class ScanShipEverywhere : BaseUnityPlugin {
         }
 
         Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} v{MyPluginInfo.PLUGIN_VERSION} has loaded!");
-
-        if (!DependencyChecker.IsGeneralImprovementsInstalled())
-            return;
-
-        if (!GeneralImprovementsSupport.IsFixPersonalScannerEnabled())
-            return;
-
-        Logger.LogWarning("This mod is incompatible with GeneralImprovements' \"FixPersonalScanner\" option!");
     }
 
     internal static void Patch() {
@@ -53,6 +45,7 @@ public class ScanShipEverywhere : BaseUnityPlugin {
         Logger.LogDebug("Patching...");
 
         Harmony.PatchAll(typeof(HUDManagerPatch));
+        Harmony.PatchAll(typeof(RoundManagerPatch));
         Harmony.PatchAll(typeof(ItemDropShipPatch));
         Harmony.PatchAll(typeof(LightSwitchPatch));
 
