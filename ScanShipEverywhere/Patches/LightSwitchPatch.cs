@@ -13,8 +13,7 @@ public static class LightSwitchPatch {
     private static void ConstructorPostfix(AutoParentToShip __instance) {
         var objectName = __instance?.name ?? "";
 
-        if (!objectName.Equals("LightSwitchContainer"))
-            return;
+        if (!objectName.Equals("LightSwitchContainer")) return;
 
         Debug.Assert(__instance != null, nameof(__instance) + " != null");
 
@@ -58,8 +57,7 @@ public static class LightSwitchPatch {
         scanNode.requiresLineOfSight = requiresLineOfSight;
         scanNode.headerText = headerText;
 
-        if (subText is null)
-            return;
+        if (subText is null) return;
 
         scanNode.subText = subText;
     }

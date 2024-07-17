@@ -9,8 +9,7 @@ public static class ItemDropShipPatch {
     [HarmonyPostfix]
     // ReSharper disable once InconsistentNaming
     private static void StartPostfix(ItemDropship __instance) {
-        if (!ScanShipEverywhere.configManager.AddDropShipScanNode())
-            return;
+        if (!ScanShipEverywhere.configManager.AddDropShipScanNode()) return;
 
         var itemDropShipObject = __instance.gameObject;
 
@@ -54,8 +53,7 @@ public static class ItemDropShipPatch {
         scanNode.requiresLineOfSight = false;
         scanNode.headerText = headerText;
 
-        if (subText is null)
-            return;
+        if (subText is null) return;
 
         scanNode.subText = subText;
     }

@@ -1,3 +1,4 @@
+using System;
 using BepInEx.Configuration;
 
 namespace ScanShipEverywhere;
@@ -51,33 +52,28 @@ internal sealed class ConfigManager {
                                                       "Defines the sub text for the light switch scan node");
     }
 
-    public int GetMaxDropShipDistance() =>
-        _maxDropShipDistance.Value;
+    public int GetMaxDropShipDistance() => _maxDropShipDistance.Value;
 
-    public int GetMaxEntranceDistance() =>
-        _maxEntranceDistance.Value;
+    public int GetMaxEntranceDistance() => _maxEntranceDistance.Value;
 
-    public int GetMaxShipDistance() =>
-        _maxShipDistance.Value;
+    public int GetMaxShipDistance() => _maxShipDistance.Value;
 
-    public bool AddDropShipScanNode() =>
-        _addDropShipScanNode.Value;
+    public bool AddDropShipScanNode() => _addDropShipScanNode.Value;
 
-    public string GetDropShipScanNodeHeaderText() =>
-        _dropShipScanNodeHeaderText.Value;
+    public string GetDropShipScanNodeHeaderText() => _dropShipScanNodeHeaderText.Value;
 
-    public string GetDropShipScanNodeSubText() =>
-        _dropShipScanNodeSubText.Value;
+    public string GetDropShipScanNodeSubText() => _dropShipScanNodeSubText.Value;
 
-    public float GetMaxScanDistanceHardLimit() =>
-        _maxScanDistanceHardLimit.Value;
+    public float GetMaxScanDistanceHardLimit() => _maxScanDistanceHardLimit.Value;
 
-    public bool AddLightSwitchScanNode() =>
-        _addLightSwitchScanNode.Value;
+    public void SubscribeToMaxScanDistanceHardLimit(EventHandler eventHandler) => _maxScanDistanceHardLimit.SettingChanged += eventHandler;
 
-    public string GetLightSwitchScanNodeHeaderText() =>
-        _lightSwitchScanNodeHeaderText.Value;
+    public void UnsubscribeFromMaxScanDistanceHardLimit(EventHandler eventHandler) =>
+        _maxScanDistanceHardLimit.SettingChanged -= eventHandler;
 
-    public string GetLightSwitchScanNodeSubText() =>
-        _lightSwitchScanNodeSubText.Value;
+    public bool AddLightSwitchScanNode() => _addLightSwitchScanNode.Value;
+
+    public string GetLightSwitchScanNodeHeaderText() => _lightSwitchScanNodeHeaderText.Value;
+
+    public string GetLightSwitchScanNodeSubText() => _lightSwitchScanNodeSubText.Value;
 }
