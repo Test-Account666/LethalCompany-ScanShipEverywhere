@@ -24,10 +24,13 @@ Also, it does not provide a config in case you just want to set your own limits.
 
 ## Known incompatibilities:<br>
 
-- [GeneralImprovements'](https://thunderstore.io/c/lethal-company/p/ShaosilGaming/GeneralImprovements/) "
-  FixPersonalScanner" option
+- None
 
 ## Compatible Scan-Overriding mods:<br>
 
+- [GoodItemScan](https://thunderstore.io/c/lethal-company/p/TestAccount666/GoodItemScan/)
 - [BetterItemScan](https://thunderstore.io/c/lethal-company/p/PopleZoo/BetterItemScan/)
 - [ScanTweaks](https://thunderstore.io/c/lethal-company/p/Saradora/ScanTweaks/)
+- [GeneralImprovements](https://thunderstore.io/c/lethal-company/p/ShaosilGaming/GeneralImprovements/)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P6ZWLCY)
