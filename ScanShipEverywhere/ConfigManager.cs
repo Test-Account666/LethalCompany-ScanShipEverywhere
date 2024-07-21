@@ -37,7 +37,7 @@ internal sealed class ConfigManager {
         _dropShipScanNodeSubText = configFile.Bind("2. Drop Ship Scan Node", "Scan Node Sub Text", "Get your items :>",
                                                    "Defines the sub text for the drop ship scan node");
 
-        _maxScanDistanceHardLimit = configFile.Bind("3. Extra", "1. Scan Distance Hard Limit", 800F,
+        _maxScanDistanceHardLimit = configFile.Bind("3. Extra", "1. Scan Distance Hard Limit", 1600F,
                                                     new ConfigDescription(
                                                         "If you encounter lags, try lowering this. This is the hard limit for the scan node distance",
                                                         new AcceptableValueRange<float>(36F, float.MaxValue - 1000F)));
