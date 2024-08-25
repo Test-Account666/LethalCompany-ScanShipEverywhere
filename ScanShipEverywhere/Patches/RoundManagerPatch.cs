@@ -8,7 +8,7 @@ public static class RoundManagerPatch {
     [HarmonyPatch(nameof(RoundManager.FinishGeneratingLevel))]
     [HarmonyPostfix]
     private static void AttachUpdaterToScanNodes() {
-        var allScanNodes = Object.FindObjectsOfType<ScanNodeProperties>();
+        var allScanNodes = Object.FindObjectsByType<ScanNodeProperties>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         allScanNodes ??= [
         ];
