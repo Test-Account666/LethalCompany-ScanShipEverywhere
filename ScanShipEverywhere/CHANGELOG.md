@@ -1,5 +1,11 @@
 # Scan Ship Everywhere Mod
 
+## 2.0.1<br>
+
+\* Fixed Ship's ScanNode not being scannable from everywhere<br>
+\- Removed `GeneralImprovements` from referenced assemblies<br>
+\# Replaced `FindObjectsOfType` with `FindObjectsByType` since we don't need sorting<br>
+
 ## 2.0.0<br>
 
 \+ Added support for GeneralImprovements' scanner<br>
