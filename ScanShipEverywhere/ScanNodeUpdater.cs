@@ -8,6 +8,7 @@ public class ScanNodeUpdater : MonoBehaviour {
     private GameObject _parent = null!;
     private Component? _component;
     private float _nextUpdate = .5F;
+    private bool _parentIsScanNodes;
 
     internal void SetScanNodeProperties(ScanNodeProperties scanNodeProperties) {
         _scanNodeProperties = scanNodeProperties;
@@ -15,20 +16,25 @@ public class ScanNodeUpdater : MonoBehaviour {
     }
 
     internal bool IsValid() {
-        if (_scanNodeProperties is null) return false;
+        if (_scanNodeProperties is null || !_scanNodeProperties) return false;
 
         _component = _parent.GetComponent<Terminal>();
-        if (_component is not null) return true;
+        if (_component) return true;
+
+        if (_parent.name.Equals("ScanNodes")) {
+            _parentIsScanNodes = true;
+            return true;
+        }
 
         _component = _parent.GetComponent<ItemDropship>();
-        if (_component is not null) return true;
+        if (_component) return true;
 
         _component = _parent.GetComponent<EntranceTeleport>();
-        return _component is not null || _scanNodeProperties.headerText.ToLower().Contains("entrance");
+        return _component || _scanNodeProperties.headerText.ToLower().Contains("entrance");
     }
 
     private void Update() {
-        if (_scanNodeProperties is null) return;
+        if (_scanNodeProperties is null || !_scanNodeProperties) return;
         _nextUpdate -= Time.deltaTime;
 
         if (_nextUpdate > 0) return;
@@ -50,7 +56,9 @@ public class ScanNodeUpdater : MonoBehaviour {
         var maxRange = ScanShipEverywhere.configManager.GetMaxEntranceDistance();
 
         // The main entrance scan node is not bound to the actual entrance in vanilla maps... For some reason ¯\_(ツ)_/¯
-        if (scanNodeProperties.headerText.ToLower().Contains("entrance")) {
+        if (_component is not EntranceTeleport entranceTeleport) {
+            if (!scanNodeProperties.headerText.ToLower().Contains("entrance")) return;
+
             if (playerControllerB.isInsideFactory) maxRange = 2;
 
             UpdateScanNode(scanNodeProperties, false, 1, maxRange);
@@ -59,16 +67,11 @@ public class ScanNodeUpdater : MonoBehaviour {
 
         // In case of custom maps that might add the scan node to the actual thing
 
-        if (_component is not EntranceTeleport entranceTeleport) return;
+        if (!entranceTeleport.isEntranceToBuilding) return;
 
         maxRange = ScanShipEverywhere.configManager.GetMaxEntranceDistance();
 
-        switch (entranceTeleport.isEntranceToBuilding) {
-            case true when playerControllerB.isInsideFactory:
-            case false when !playerControllerB.isInsideFactory:
-                maxRange = 2;
-                break;
-        }
+        if (playerControllerB.isInsideFactory) maxRange = 2;
 
         UpdateScanNode(scanNodeProperties, false, 1, maxRange);
     }
@@ -84,7 +87,7 @@ public class ScanNodeUpdater : MonoBehaviour {
     }
 
     private void HandleSpaceShip(PlayerControllerB playerControllerB, ScanNodeProperties scanNodeProperties) {
-        if (_component is not Terminal terminal) return;
+        if (!_parentIsScanNodes && _component is not Terminal) return;
 
         var maxRange = ScanShipEverywhere.configManager.GetMaxShipDistance();
 
