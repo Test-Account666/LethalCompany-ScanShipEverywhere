@@ -5,7 +5,7 @@
         <AssemblyName>TestAccount666.ScanShipEverywhere</AssemblyName>
         <Product>ScanShipEverywhere</Product>
         <!-- Change to whatever version you're currently on. -->
-        <Version>2.0.0</Version>
+        <Version>2.0.1</Version>
         <Description>Improves scan nodes for you</Description>
         <Source>https://github.com/Test-Account666/LethalCompany-ScanShipEverywhere/</Source>
     </PropertyGroup>
@@ -64,9 +64,6 @@
     <ItemGroup>
         <Reference Include="BetterItemScan">
             <HintPath>..\include\BetterItemScan.dll</HintPath>
-        </Reference>
-        <Reference Include="GeneralImprovements">
-            <HintPath>..\include\GeneralImprovements.dll</HintPath>
         </Reference>
         <Reference Include="ScanTweaks">
             <HintPath>..\include\ScanTweaks.dll</HintPath>
