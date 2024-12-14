@@ -1,5 +1,9 @@
 # Scan Ship Everywhere Mod
 
+## 2.0.2<br>
+
+\* Fixed rare NullReferenceException<br>
+
 ## 2.0.1<br>
 
 \* Fixed Ship's ScanNode not being scannable from everywhere<br>
