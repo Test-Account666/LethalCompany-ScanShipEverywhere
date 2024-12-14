@@ -10,13 +10,11 @@ public class ScanNodeUpdater : MonoBehaviour {
     private float _nextUpdate = .5F;
     private bool _parentIsScanNodes;
 
-    internal void SetScanNodeProperties(ScanNodeProperties scanNodeProperties) {
-        _scanNodeProperties = scanNodeProperties;
-        _parent = _scanNodeProperties.gameObject.transform.parent.gameObject;
-    }
+    internal bool IsValid(ScanNodeProperties scanNodeProperties) {
+        if (!scanNodeProperties) return false;
 
-    internal bool IsValid() {
-        if (_scanNodeProperties is null || !_scanNodeProperties) return false;
+        _scanNodeProperties = scanNodeProperties;
+        _parent = scanNodeProperties.gameObject.transform.parent.gameObject;
 
         _component = _parent.GetComponent<Terminal>();
         if (_component) return true;
@@ -30,7 +28,7 @@ public class ScanNodeUpdater : MonoBehaviour {
         if (_component) return true;
 
         _component = _parent.GetComponent<EntranceTeleport>();
-        return _component || _scanNodeProperties.headerText.ToLower().Contains("entrance");
+        return _component || scanNodeProperties.headerText.ToLower().Contains("entrance");
     }
 
     private void Update() {

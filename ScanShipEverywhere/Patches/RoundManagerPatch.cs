@@ -14,13 +14,11 @@ public static class RoundManagerPatch {
         ];
 
         foreach (var scanNodeProperties in allScanNodes) {
-            if (scanNodeProperties is null) continue;
+            if (!scanNodeProperties) continue;
 
             var scanNodeUpdater = scanNodeProperties.gameObject.AddComponent<ScanNodeUpdater>();
 
-            scanNodeUpdater.SetScanNodeProperties(scanNodeProperties);
-
-            if (scanNodeUpdater.IsValid()) continue;
+            if (scanNodeUpdater.IsValid(scanNodeProperties)) continue;
 
             Object.Destroy(scanNodeUpdater);
         }
