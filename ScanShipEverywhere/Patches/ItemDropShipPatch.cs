@@ -24,8 +24,7 @@ public static class ItemDropShipPatch {
 
         var scanNodeSubText = ScanShipEverywhere.configManager.GetDropShipScanNodeSubText();
 
-        CreateScanNodeOnObject(itemDropShipObject, scanNodeHeaderText, scanNodeSubText,
-                               ScanShipEverywhere.configManager.GetMaxDropShipDistance());
+        CreateScanNodeOnObject(itemDropShipObject, scanNodeHeaderText, scanNodeSubText, ScanShipEverywhere.configManager.GetMaxDropShipDistance());
     }
 
     private static void CreateScanNodeOnObject(GameObject gameObject, string headerText, string? subText, int maxRange) {

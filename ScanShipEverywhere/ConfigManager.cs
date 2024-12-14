@@ -68,8 +68,7 @@ internal sealed class ConfigManager {
 
     public void SubscribeToMaxScanDistanceHardLimit(EventHandler eventHandler) => _maxScanDistanceHardLimit.SettingChanged += eventHandler;
 
-    public void UnsubscribeFromMaxScanDistanceHardLimit(EventHandler eventHandler) =>
-        _maxScanDistanceHardLimit.SettingChanged -= eventHandler;
+    public void UnsubscribeFromMaxScanDistanceHardLimit(EventHandler eventHandler) => _maxScanDistanceHardLimit.SettingChanged -= eventHandler;
 
     public bool AddLightSwitchScanNode() => _addLightSwitchScanNode.Value;
 

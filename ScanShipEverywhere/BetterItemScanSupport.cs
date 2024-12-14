@@ -22,8 +22,7 @@ public static class BetterItemScanSupport {
         _maxRangeField ??= AccessTools.DeclaredField(typeof(PlayerControllerBPatch_A), "maxDistance");
 
         if (_maxRangeField is null) {
-            ScanShipEverywhere.Logger.LogFatal(
-                "Couldn't find \"_maxRangeField\" field in BetterItemScan's \"PingScan\" PlayerControllerBPatch_A!'");
+            ScanShipEverywhere.Logger.LogFatal("Couldn't find \"_maxRangeField\" field in BetterItemScan's \"PingScan\" PlayerControllerBPatch_A!'");
             return;
         }
 
